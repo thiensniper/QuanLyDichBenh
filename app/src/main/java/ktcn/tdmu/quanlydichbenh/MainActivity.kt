@@ -58,7 +58,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         mMap.addMarker(MarkerOptions().position(place).title("Đại học Thủ Dầu Một"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(place))
         mMap.mapType=GoogleMap.MAP_TYPE_HYBRID
-        
 
     }
 
