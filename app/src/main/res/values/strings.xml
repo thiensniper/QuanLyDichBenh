@@ -1,9 +1,10 @@
 <resources>
-    <string name="app_name">Quan Ly Dich Benh</string>
+    <string name="app_name">Quản Lý Dịch Bệnh</string>
     <string name="map_api_key">AIzaSyAi2p1615aN6I6cUKhNzITgHNEYChrwMG8</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="title_activity_maps">Map</string>
 </resources>
