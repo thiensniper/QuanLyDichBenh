@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         nav_view.setNavigationItemSelectedListener(this)
 
-        addMap()
+        addMap()//Xử lý bản đồ
     }
 
     private fun addMap() {
@@ -54,10 +54,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         mMap = googleMap
 
         // Add a marker and move the camera
-        val place = LatLng(10.980733, 106.674436)
-        mMap.addMarker(MarkerOptions().position(place).title("Đại học Thủ Dầu Một"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(place))
+        val place1 = LatLng(10.980733, 106.674436)
+        mMap.addMarker(MarkerOptions().position(place1).title("Đại học Thủ Dầu Một"))
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(place1))
         mMap.mapType=GoogleMap.MAP_TYPE_HYBRID
+        mMap.moveCamera(CameraUpdateFactory.zoomTo(15f))
+
+        val place2 = LatLng(10.979306, 106.675090)
+        mMap.addMarker(MarkerOptions().position(place2).title("Open IT Lab Đại học Thủ Dầu Một"))
+
+        
 
     }
 
