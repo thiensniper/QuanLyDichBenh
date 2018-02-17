@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val place2 = LatLng(10.979306, 106.675090)
         mMap.addMarker(MarkerOptions().position(place2).title("Open IT Lab Đại học Thủ Dầu Một"))
 
-        
+
 
     }
 
