@@ -8,18 +8,12 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import com.google.android.gms.maps.CameraUpdateFactory
+import android.widget.Toast
 import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MapStyleOptions
-import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
-import kotlinx.android.synthetic.main.content_main.*
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
 
     private lateinit var mMap: GoogleMap
@@ -41,31 +35,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         nav_view.setNavigationItemSelectedListener(this)
 
-        addMap()//Xử lý bản đồ
-    }
-
-    private fun addMap() {
-        val mapFragment:SupportMapFragment= supportFragmentManager
-                .findFragmentById(R.id.myMap) as SupportMapFragment
-        mapFragment.getMapAsync(this)
-    }
-
-    override fun onMapReady(googleMap: GoogleMap) {
-        mMap = googleMap
-
-        // Add a marker and move the camera
-        val place1 = LatLng(10.980733, 106.674436)
-        mMap.addMarker(MarkerOptions().position(place1).title("Đại học Thủ Dầu Một"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(place1))
-        mMap.mapType=GoogleMap.MAP_TYPE_HYBRID
-        mMap.moveCamera(CameraUpdateFactory.zoomTo(15f))
-
-        val place2 = LatLng(10.979306, 106.675090)
-        mMap.addMarker(MarkerOptions().position(place2).title("Open IT Lab Đại học Thủ Dầu Một"))
-
-
+        addMapFragment()//Thêm giao diện bản đồ
+        //
 
     }
+
+    private fun addMapFragment() {
+        val mapFragment= supportFragmentManager
+                .findFragmentById(R.id.myMap) as MyMapFragment
+        mapFragment.getMapAsync(mapFragment)
+    }
+
 
 
     override fun onBackPressed() {
@@ -95,8 +75,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
-            R.id.nav_camera -> {
-                // Handle the camera action
+            R.id.nav_map -> {
+                //Thực hiện khi nhấn vào menu Bản đồ
+                Toast.makeText(this, "...", Toast.LENGTH_SHORT).show()
+
             }
             R.id.nav_gallery -> {
 
