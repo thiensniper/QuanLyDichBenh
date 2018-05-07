@@ -1,5 +1,6 @@
 package ktcn.tdmu.quanlydichbenh
 
+import android.app.FragmentTransaction
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
@@ -14,7 +15,7 @@ import kotlinx.android.synthetic.main.app_bar_main.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
-
+    private lateinit var fragmentTransaction: FragmentTransaction
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,12 +35,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         nav_view.setCheckedItem(R.id.nav_map) //Hiển thị item được select lần đầu
         nav_view.setNavigationItemSelectedListener(this)
 
-        addMapFragment()//Thêm giao diện bản đồ
+        showMapFragment()//Thêm giao diện bản đồ
         //
+        var fragmentA:Test1Fragment=Test1Fragment()
+        var args:Bundle=Bundle()
+
+//        fragmentTransaction = fragmentManager.beginTransaction()
+//        fragmentTransaction.replace(R.id.fragmentTest1, fragmentA)
+//        fragmentTransaction.commit()
 
     }
 
-    private fun addMapFragment() {
+    private fun showMapFragment() {
         val mapFragment= supportFragmentManager
                 .findFragmentById(R.id.myMap) as MyMapFragment
         mapFragment.getMapAsync(mapFragment)
@@ -75,11 +82,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // Handle navigation view item clicks here.
         when (item.itemId) {
             R.id.nav_map -> {
-                //Thực hiện khi nhấn vào menu Bản đồ
+                //Action on click
                 Toast.makeText(this, "...", Toast.LENGTH_SHORT).show()
-
+                showMapFragment()
             }
             R.id.nav_gallery -> {
+
 
             }
             R.id.nav_slideshow -> {
@@ -100,3 +108,4 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 }
+
